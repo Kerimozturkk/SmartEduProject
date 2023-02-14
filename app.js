@@ -5,7 +5,7 @@ const courseRoute = require('./routes/courseRoute');
 
 const app = express();
 
-mongoose.connect('mongodb//localhost/smartedu-db',{
+mongoose.connect('mongodb://localhost/smartedu-db',{
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {console.log('DB connnected successfully')});
@@ -16,6 +16,10 @@ app.set('view engine',"ejs");
 
 // Middlewares
 app.use(express.static("public"));
+
+// bodyParser Middleware
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
 
 
 // Routes

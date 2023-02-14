@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+mongoose.set('strictQuery', false);
 
 const CourseShema = new Schema({
   name: {
