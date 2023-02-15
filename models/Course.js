@@ -22,6 +22,10 @@ const CourseShema = new Schema({
   slug: {
     type:String,
     unique: true,
+  },
+  category:{ // Course ve Category modeli arasında ilişki kuruyoruz.
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Category", // referans verdiğim model'in ismi
   }
 });
 
