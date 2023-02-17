@@ -26,6 +26,10 @@ const CourseShema = new Schema({
   category:{ // Course ve Category modeli arasında ilişki kuruyoruz.
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category", // referans verdiğim model'in ismi
+  },
+  user:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User", // referans verdiğim model'in ismi
   }
 });
 
