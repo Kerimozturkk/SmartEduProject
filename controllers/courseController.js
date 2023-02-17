@@ -52,7 +52,6 @@ exports.getAllCourses = async (req, res) => {
   }
 };
 
-
 exports.getCourse = async (req, res) => {
   try {
     const course = await Course.findOne({slug: req.params.slug}).populate('user');
@@ -61,6 +60,27 @@ exports.getCourse = async (req, res) => {
       course,
       page_name: 'courses',
     });
+  } catch (error) {
+    res.status(400).json({
+      // Postman'de hata mesajını görelim.
+      status: 'fail',
+      error,
+
+    });
+  }
+};
+
+
+exports.enrollCourse = async (req, res) => {
+  try {
+
+    const user = await User.findById({_id: req.session.userID});
+    // Burda bir sorgulama yapıcaz; eğer user boş ise login sayfasına redirect et. 
+    await user.courses.push({ _id: req.body.course_id });
+    await user.save();
+
+    res.status(200).redirect('/users/dashboard');
+    
   } catch (error) {
     res.status(400).json({
       // Postman'de hata mesajını görelim.
