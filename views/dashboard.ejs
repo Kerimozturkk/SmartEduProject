@@ -35,7 +35,13 @@
 											<h2><a href="/courses/<%= user.courses[i].slug %>" title=""><%= user.courses[i].name %></a></h2>
 										</div>
 										<div class="course-desc">
-											<p><%= user.courses[i].description %></p>
+											<p><%= user.courses[i].description.substring(0,100) + '...' %></p>
+											<form method="POST" action="/courses/release">
+												<input type="hidden" name="course_id" value="<%= user.courses[i]._id %>">
+												<button class="btn btn-lg btn-danger text-white">
+													<span>RELEASE</span>
+												</button>
+											</form>
 										</div>
 									</div>
 								</div>
@@ -87,7 +93,7 @@
 										<h2><a href="/courses/<%= courses[i].slug %>" title=""><%= courses[i].name %></a></h2>
 									</div>
 									<div class="course-desc">
-										<p><%= courses[i].description %></p>
+										<p><%= courses[i].description.substring(0,100) + '...' %></p>
 									</div>
 								</div>
 							</div>
