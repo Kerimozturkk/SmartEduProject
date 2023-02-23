@@ -152,7 +152,7 @@ exports.updateCourse = async (req, res) => {
     course.category = req.body.category;
     course.save();
 
-    req.flash("success",`${course.name} has been deleted successfully`);
+    req.flash("success",`${course.name} has been updated successfully`);
     res.status(200).redirect('/users/dashboard');
     
   } catch (error) {
