@@ -23,9 +23,10 @@ router.route('/signup').post(
 
         body('password').not().isEmpty().withMessage('Please Enter Your Password'),
     ],
-    authController.createUser); // http://localhost:3000/users/signup
+    authController.createUser); 
 router.route('/login').post(authController.loginUser);
 router.route('/logout').get(authController.logoutUser);
-router.route('/dashboard').get(authMiddleware,authController.getDashboardPage); //https://localhost:3000/users/dashboard
+router.route('/dashboard').get(authMiddleware,authController.getDashboardPage); 
+router.route('/:id').delete(authController.deleteUser);
 
 module.exports = router;
